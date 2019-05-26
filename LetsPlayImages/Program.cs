@@ -14,17 +14,9 @@ namespace LetsPlayImages
     {
         static void Main(string[] args)
         {
-            //ProcessingAlgorithm algo = new TestProcessing(new FolderCommandName());
-
-            //algo.ProcessImages(string.Empty);
-
-            //while(Console.ReadKey().Key != ConsoleKey.Q)
-            //{
-            //    say(" " + Console.ReadLine());
-            //}
-
-            //ProcessingAlgorithm<IFolderCreator> pa = new LocationSorterProcessing(new FolderCommandName());
-            //pa.Process(@"C:\Users\Roma\Desktop");
+            //two lines below just for test web request
+            ProcessingAlgorithm<IFolderCreator> pa = new LocationSorterProcessing(new FolderCommandName());
+            pa.Process(@"C:\Users\Roma\Desktop\Foto GPS");
 
 
             while (true)
@@ -35,16 +27,20 @@ namespace LetsPlayImages
                 switch (Console.ReadLine().ToLower())
                 {
                     case "rename":
+                        Console.WriteLine("Enter folder path:");
                         new CreationDateRenameProcessing(new FolderCommandName()).Process(Console.ReadLine());
                         break;
                     case "add label":
+                        Console.WriteLine("Enter folder path:");
                         new AddDateTimeMarkProcessing(new FolderCommandName()).Process(Console.ReadLine());
                         break;
                     case "year sort":
+                        Console.WriteLine("Enter folder path:");
                         new SortByYearsProcessing(new FolderCommandName()).Process(Console.ReadLine());
                         break;
                     case "places sort":
-                        Console.WriteLine("This command is not available...");
+                        Console.WriteLine("Enter folder path:");
+                        new LocationSorterProcessing(new FolderCommandName()).Process(Console.ReadLine());
                         break;
                     case "quit":
                         return;
